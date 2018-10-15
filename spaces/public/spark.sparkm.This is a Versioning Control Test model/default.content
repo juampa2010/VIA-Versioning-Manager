@@ -1,0 +1,128 @@
+<DataPipeModel description="Description of New Model 4" name="This is a Versioning Control Test model" editBy="flow" is_init="false" useStreaming="auto" durableStreaming="false" useHive="auto" batchDuration="P1M" checkpoint="" batchSampling="true" sparkMasterHost="">
+  <HiveConfig>
+    <Properties>
+      <Property name="hive.warehouse.hdfs.source" value=""/>
+      <Property name="hive.metastore.data.source" value=""/>
+      <Property name="hive.server2.thrift.port" value=""/>
+      <Property name="hive.db.schema" value=""/>
+    </Properties>
+  </HiveConfig>
+  <ModelInfo validated="true">
+    <Pipes>
+      <Pipe index="1000" uuid="" name="(main)">
+      </Pipe>
+    </Pipes>
+    <Flows>
+      <Flow index="1000" uuid="Main" isNested="false" revision="23" name="Main" showFooter="true">
+        <Node index="1001" uuid="cc9118ac-ae8d-4b4f-896d-2ad01be6f70d" type="JDBCBatch" label="Get Products" x="129" y="60" width="130" height="75">
+            <Output name="out" uid="0" outputType="RDD" dataType="class:Step1_Class">
+              <Field name="PROD_ID" label="PROD_ID" type="string" isArray="false" isOptional="false" column="PROD_ID" wrapName="PROD_ID"/>
+              <Field name="PROD_NAME" label="PROD_NAME" type="string" isArray="false" isOptional="true" column="PROD_NAME" wrapName="PROD_NAME"/>
+              <Field name="PROD_DESC" label="PROD_DESC" type="string" isArray="false" isOptional="true" column="PROD_DESC" wrapName="PROD_DESC"/>
+              <Field name="AVAIL" label="AVAIL" type="double" isArray="false" isOptional="true" column="AVAIL" wrapName="AVAIL"/>
+              <Field name="UNIT" label="UNIT" type="string" isArray="false" isOptional="true" column="UNIT" wrapName="UNIT"/>
+              <Field name="WAREHOUSE" label="WAREHOUSE" type="string" isArray="false" isOptional="true" column="WAREHOUSE" wrapName="WAREHOUSE"/>
+              <Field name="MFR" label="MFR" type="string" isArray="false" isOptional="true" column="MFR" wrapName="MFR"/>
+              <Field name="PROD_CATS" label="PROD_CATS" type="string" isArray="false" isOptional="true" column="PROD_CATS" wrapName="PROD_CATS"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model type="jdbcBatch" sourceType="jdbc" caseClass="Step1_Class" isClassRef="false" dataSpeed="" dataVolume="" dataSource="/vitria/m3o/datasource/DefaultDomain/defaultds">
+              <Schema>
+                <Field name="PROD_ID" label="PROD_ID" type="string" clazz="" isArray="false" isOptional="false" wrapName="PROD_ID"/>
+                <Field name="PROD_NAME" label="PROD_NAME" type="string" clazz="" isArray="false" isOptional="true" wrapName="PROD_NAME"/>
+                <Field name="PROD_DESC" label="PROD_DESC" type="string" clazz="" isArray="false" isOptional="true" wrapName="PROD_DESC"/>
+                <Field name="AVAIL" label="AVAIL" type="double" clazz="" isArray="false" isOptional="true" wrapName="AVAIL"/>
+                <Field name="UNIT" label="UNIT" type="string" clazz="" isArray="false" isOptional="true" wrapName="UNIT"/>
+                <Field name="WAREHOUSE" label="WAREHOUSE" type="string" clazz="" isArray="false" isOptional="true" wrapName="WAREHOUSE"/>
+                <Field name="MFR" label="MFR" type="string" clazz="" isArray="false" isOptional="true" wrapName="MFR"/>
+                <Field name="PROD_CATS" label="PROD_CATS" type="string" clazz="" isArray="false" isOptional="true" wrapName="PROD_CATS"/>
+              </Schema>
+              <datasource name="/vitria/m3o/datasource/DefaultDomain/defaultds"></datasource>
+              <query>
+              <table schema='vitria' info='{"catalog":"vitria","name":"product","type":"TABLE"}'>product</table>
+              <columns>
+                <column>PROD_ID</column>
+                <column>PROD_NAME</column>
+                <column>PROD_DESC</column>
+                <column>AVAIL</column>
+                <column>UNIT</column>
+                <column>WAREHOUSE</column>
+                <column>MFR</column>
+                <column>PROD_CATS</column>
+              </columns>
+              <filter/>
+              </query>
+            </Model>
+        </Node>
+        <Node index="1002" uuid="2aadb4a2-171a-4e40-8944-f77eeaa7e149" type="Filter" label="Filter by SFO" x="314" y="60" width="130" height="75">
+            <Source name="source" uid="0" outputType="RDD" dataType="class:Step1_Class">
+              <DataSource category="#OUTPUT" id="undefined" name="out" nodeId="cc9118ac-ae8d-4b4f-896d-2ad01be6f70d">
+                <Field name="PROD_ID" label="PROD_ID" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="false" wrapName="PROD_ID" column="PROD_ID"/>
+                <Field name="PROD_NAME" label="PROD_NAME" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="PROD_NAME" column="PROD_NAME"/>
+                <Field name="PROD_DESC" label="PROD_DESC" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="PROD_DESC" column="PROD_DESC"/>
+                <Field name="AVAIL" label="AVAIL" type="double" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="AVAIL" column="AVAIL"/>
+                <Field name="UNIT" label="UNIT" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="UNIT" column="UNIT"/>
+                <Field name="WAREHOUSE" label="WAREHOUSE" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="WAREHOUSE" column="WAREHOUSE"/>
+                <Field name="MFR" label="MFR" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="MFR" column="MFR"/>
+                <Field name="PROD_CATS" label="PROD_CATS" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="PROD_CATS" column="PROD_CATS"/>
+              </DataSource>
+            </Source>
+            <Output name="out" uid="0" outputType="RDD" dataType="class:Step1_Class">
+              <Field name="PROD_ID" label="PROD_ID" type="string" isArray="false" isOptional="false" column="PROD_ID" wrapName="PROD_ID"/>
+              <Field name="PROD_NAME" label="PROD_NAME" type="string" isArray="false" isOptional="true" column="PROD_NAME" wrapName="PROD_NAME"/>
+              <Field name="PROD_DESC" label="PROD_DESC" type="string" isArray="false" isOptional="true" column="PROD_DESC" wrapName="PROD_DESC"/>
+              <Field name="AVAIL" label="AVAIL" type="double" isArray="false" isOptional="true" column="AVAIL" wrapName="AVAIL"/>
+              <Field name="UNIT" label="UNIT" type="string" isArray="false" isOptional="true" column="UNIT" wrapName="UNIT"/>
+              <Field name="WAREHOUSE" label="WAREHOUSE" type="string" isArray="false" isOptional="true" column="WAREHOUSE" wrapName="WAREHOUSE"/>
+              <Field name="MFR" label="MFR" type="string" isArray="false" isOptional="true" column="MFR" wrapName="MFR"/>
+              <Field name="PROD_CATS" label="PROD_CATS" type="string" isArray="false" isOptional="true" column="PROD_CATS" wrapName="PROD_CATS"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model filterModel="form">
+              <Filters>
+                <Filter field="" op="sleText" arg="" value="" sleText="WAREHOUSE = &apos;SFO&apos;"/>
+              </Filters>
+            </Model>
+        </Node>
+        <Node index="1003" uuid="53bfcbf5-9e0c-4e12-8ec6-f3185ea10480" type="Aggregate" label="Count Availability by Product Manufacturer" x="500" y="60" width="272" height="75">
+            <Source name="source" uid="0" outputType="RDD" dataType="class:Step1_Class">
+              <DataSource category="#OUTPUT" id="undefined" name="out" nodeId="2aadb4a2-171a-4e40-8944-f77eeaa7e149">
+                <Field name="PROD_ID" label="PROD_ID" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="false" wrapName="PROD_ID" column="PROD_ID"/>
+                <Field name="PROD_NAME" label="PROD_NAME" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="PROD_NAME" column="PROD_NAME"/>
+                <Field name="PROD_DESC" label="PROD_DESC" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="PROD_DESC" column="PROD_DESC"/>
+                <Field name="AVAIL" label="AVAIL" type="double" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="AVAIL" column="AVAIL"/>
+                <Field name="UNIT" label="UNIT" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="UNIT" column="UNIT"/>
+                <Field name="WAREHOUSE" label="WAREHOUSE" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="WAREHOUSE" column="WAREHOUSE"/>
+                <Field name="MFR" label="MFR" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="MFR" column="MFR"/>
+                <Field name="PROD_CATS" label="PROD_CATS" type="string" isDimension="false" isMeasure="false" isArray="false" isOptional="true" wrapName="PROD_CATS" column="PROD_CATS"/>
+              </DataSource>
+            </Source>
+            <Output name="out" uid="0" outputType="RDD" dataType="class:Step3_Class">
+              <Field name="AVAIL" label="AVAIL" type="double" isArray="false" isOptional="true"/>
+              <Field name="MFR" label="MFR" type="string" isArray="false" isOptional="true"/>
+              <Field name="Count_Availability" label="Count_Availability" type="long" isArray="false" isOptional="false"/>
+                <ExploreConfig>{&quot;_index&quot;:&quot;Default&quot;,&quot;items&quot;:[{&quot;name&quot;:&quot;Default&quot;}]}</ExploreConfig>
+            </Output>
+            <Model _caseClass="Step3_Class" isClassRef="false">
+              <Dimensions>
+                <Dimension field="AVAIL"/>
+                <Dimension field="MFR"/>
+              </Dimensions>
+              <Measures>
+                <Measure type="count" field="AVAIL" asName="Count_Availability"/>
+              </Measures>
+            </Model>
+        </Node>
+        <Link srcId="cc9118ac-ae8d-4b4f-896d-2ad01be6f70d" srcPort="out:0" tgtId="2aadb4a2-171a-4e40-8944-f77eeaa7e149" tgtPort="in:0"/>
+        <Link srcId="2aadb4a2-171a-4e40-8944-f77eeaa7e149" srcPort="out:0" tgtId="53bfcbf5-9e0c-4e12-8ec6-f3185ea10480" tgtPort="in:0"/>
+      <Codes>
+      </Codes>
+      <Libraries>
+      </Libraries>
+      <Resources>
+      </Resources>
+      <Properties>[]</Properties>
+      </Flow>
+    </Flows>
+  </ModelInfo>
+</DataPipeModel>
