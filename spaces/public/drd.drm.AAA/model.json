@@ -1,0 +1,16 @@
+{
+  "contents": [{
+    "fileref": "ModelContentFile0",
+    "name": "default"
+  }],
+  "properties": {
+    "_RESOURCE_Type": "drm",
+    "drd.dimension": ",,,,,",
+    "drd.key": "",
+    "drd.measure": "",
+    "drd.timestamp": "",
+    "drd.type": "resource.table",
+    "modelStatus": "update",
+    "name": "AAA"
+  }
+}
