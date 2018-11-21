@@ -15,6 +15,10 @@
     {
       "fileref": "ModelContentFile3",
       "name": "miniviewData"
+    },
+    {
+      "fileref": "ModelContentFile4",
+      "name": "shellResult"
     }
   ],
   "properties": {
