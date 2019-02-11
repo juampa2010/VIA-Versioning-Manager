@@ -1,0 +1,32 @@
+{
+  "contents": [
+    {
+      "fileref": "ModelContentFile0",
+      "name": "default"
+    },
+    {
+      "classname": "[B",
+      "fileref": "ModelContentFile1",
+      "name": "SOURCE"
+    },
+    {
+      "classname": "inputstream",
+      "fileref": "ModelContentFile2",
+      "name": "file-e44bb26c-d204-4469-8486-33b7af5b67ba_0"
+    }
+  ],
+  "owner": "vtbaadmin",
+  "properties": {
+    "_RESOURCE_Description": "Injecting real time data observations for month November 1st to 24th, where Ozono is the value to predict (included in this data to do also deviation check)",
+    "_RESOURCE_Type": "asm",
+    "com.vitria.as.references": "#",
+    "com.vitria.as.samples": "=* Source Definition",
+    "com.vitria.as.size": "0",
+    "live": "true",
+    "modelStatus": "valid",
+    "module_deps": "database,file,r",
+    "name": "Real Time Air Quality November Data by Area",
+    "sourceType": "FileSource",
+    "vtui:deployedDistinctViews": ""
+  }
+}
